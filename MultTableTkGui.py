@@ -6,8 +6,8 @@ main_window = Tk()
 main_window.geometry('600x400')
 main_window.title("Multiplication Table")
 title_font = ("Times",22,'bold')
-label_font = ("TimesNewRoman",14)
-button_font = ("TimesNewRoman",11,'bold')
+label_font = ("Times New Roman",14)
+button_font = ("Times New Roman",11,'bold')
 
 label_window = Label(main_window,text = "GUI for printing Multiplication Table",
                      font = title_font,fg = '#32cd32',bg='#ffbf00')
@@ -45,14 +45,16 @@ print_btn = Button(frame1,text = "PRINT",command = print_table,
                    font =button_font,bg ='#39ff14')
 print_btn.grid(columnspan = 2,pady =10)
 
-frame2 = Frame(main_window,highlightbackground="red",
-               highlightthickness=3)
-frame2.grid(row = 1, column = 1)
+frame2 = Frame(main_window,highlightbackground="red",highlightthickness=3)
+frame2.grid(row = 1, column = 1,padx =5)
 label_print = Label(frame2, text = "Multiplication Table",
                     font =button_font)
 label_print.grid(columnspan = 2)
 text_box = Text(frame2,height=15,width=30)
 text_box.grid(columnspan = 2)
+scroll_bar = Scrollbar(frame2,orient = VERTICAL,command = text_box.yview)
+scroll_bar.grid(row = 1,column =1,columnspan =2, sticky=NE+E+SE)
+text_box.config(yscrollcommand=scroll_bar.set)
 reset_btn = Button(main_window,text = "RESET",command = reset,
                    font =button_font,bg='#ffa700')
 reset_btn.grid(columnspan = 2,pady =10)
